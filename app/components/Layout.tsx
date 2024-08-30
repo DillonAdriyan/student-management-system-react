@@ -1,11 +1,24 @@
+"use client";
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "/@/components/ui/button"
+import { Input } from "/@/components/ui/input"
 import { BarChart3, BookOpen, GraduationCap, LayoutDashboard, LogOut, PieChart, UserCheck, Users } from "lucide-react"
 
-export default function Component() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const pathname = usePathname()
+
+  const navItems = [
+    { href: "/", icon: LayoutDashboard, label: "Dashboard" },
+    { href: "/students", icon: Users, label: "Students" },
+    { href: "/courses", icon: BookOpen, label: "Courses" },
+    { href: "/attendance", icon: UserCheck, label: "Attendance" },
+    { href: "/grades", icon: GraduationCap, label: "Grades" },
+    { href: "/reports", icon: PieChart, label: "Reports" },
+  ]
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -37,48 +50,18 @@ export default function Component() {
             </Button>
           </div>
           <nav className="flex-1 space-y-1 px-2 py-4">
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <LayoutDashboard className="mr-3 h-6 w-6" />
-              Dashboard
-            </Link>
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <Users className="mr-3 h-6 w-6" />
-              Students
-            </Link>
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <BookOpen className="mr-3 h-6 w-6" />
-              Courses
-            </Link>
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <UserCheck className="mr-3 h-6 w-6" />
-              Attendance
-            </Link>
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <GraduationCap className="mr-3 h-6 w-6" />
-              Grades
-            </Link>
-            <Link
-              className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100"
-              href="#"
-            >
-              <PieChart className="mr-3 h-6 w-6" />
-              Reports
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 ${
+                  pathname === item.href ? "bg-gray-100" : ""
+                }`}
+              >
+                <item.icon className="mr-3 h-6 w-6" />
+                {item.label}
+              </Link>
+            ))}
           </nav>
           <div className="mt-auto p-4">
             <Button className="w-full" variant="outline">
@@ -151,7 +134,7 @@ export default function Component() {
 
         {/* Page content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
-          {/* Your page content will go here */}
+          {children}
         </main>
       </div>
     </div>

@@ -1,10 +1,13 @@
+"use client";
+
 import { useState } from "react"
+import { BarChart, LineChart } from "lucide-react";
 import { Bar, Line } from "react-chartjs-2"
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js"
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend} from "chart.js"
 import { ArrowDownIcon, ArrowUpIcon, BookOpen, GraduationCap, UserCheck, Users } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "/@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "/@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "/@/components/ui/select"
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend)
 

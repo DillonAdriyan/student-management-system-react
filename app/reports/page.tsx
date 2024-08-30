@@ -1,4 +1,4 @@
-import ReportingAnalitycs from '../components/ReportingAnalitycs'
+import ReportingAnalitycs from '../components/ReportingAnalytics'
 
 export default function ReportsPage() {
   return <ReportingAnalitycs />

@@ -1,11 +1,22 @@
-import Layout from './components/Layout'
 import './globals.css'
-// ... (import lainnya)
+import { Inter } from 'next/font/google'
+import Layout from './components/Layout'
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Student Management System',
+  description: 'A comprehensive system for managing students, courses, and more.',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <Layout>{children}</Layout>
       </body>
     </html>
