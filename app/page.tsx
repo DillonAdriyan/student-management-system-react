@@ -1,5 +1,3 @@
-import Dashboard from './components/Dashboard'
-
 export default function Home() {
-  return <Dashboard />
+  return null; // or you can remove this file altogether if not needed.
 }

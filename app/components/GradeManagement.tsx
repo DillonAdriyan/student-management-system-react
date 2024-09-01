@@ -68,7 +68,7 @@ export default function GradeManagement() {
         <CardHeader className="bg-green-500 text-white p-4 rounded-t-lg">
           <CardTitle className="text-xl">Grade Sheet</CardTitle>
         </CardHeader>
-        <CardContent className="p-6">
+        <CardContent className="p-6 overflow-x-auto">
           <Table className="min-w-full">
             <TableHeader>
               <TableRow>
