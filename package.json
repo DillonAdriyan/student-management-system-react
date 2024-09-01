@@ -25,6 +25,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "recharts": "^2.12.7",
+    "shadcn": "^1.0.0",
+    "swiper": "^11.1.11",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },

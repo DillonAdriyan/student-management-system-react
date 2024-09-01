@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { BarChart3, BookOpen, GraduationCap, LayoutDashboard, LogOut, PieChart, UserCheck, Users } from "lucide-react"
+import { BarChart3, BookOpen, GraduationCap, LayoutDashboard, LogOut, PieChart, UserCheck2, Users } from "lucide-react"
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export function AppComponentsLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const pathname = usePathname()
 
@@ -15,26 +15,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", icon: LayoutDashboard, label: "Dashboard" },
     { href: "/students", icon: Users, label: "Students" },
     { href: "/courses", icon: BookOpen, label: "Courses" },
-    { href: "/attendance", icon: UserCheck, label: "Attendance" },
+    { href: "/attendance", icon: UserCheck2, label: "Attendance" },
     { href: "/grades", icon: GraduationCap, label: "Grades" },
     { href: "/reports", icon: PieChart, label: "Reports" },
   ]
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex flex-col h-screen bg-soft-blue-50 lg:flex-row">
       {/* Sidebar */}
       <aside
         className={`${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0`}
+        } fixed inset-y-0 left-0 z-50 w-64 bg-soft-blue-100 shadow-lg transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0`}
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between px-4 py-6">
-            <span className="text-2xl font-semibold">SMS</span>
+          <div className="flex items-center justify-between px-4 py-6 bg-soft-blue-200">
+            <span className="text-2xl font-semibold text-soft-blue-800">SMS</span>
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden text-soft-blue-800"
               onClick={() => setIsSidebarOpen(false)}
             >
               <svg
@@ -54,8 +54,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 ${
-                  pathname === item.href ? "bg-gray-100" : ""
+                className={`flex items-center rounded-lg px-4 py-2 text-soft-blue-800 hover:bg-soft-blue-200 ${
+                  pathname === item.href ? "bg-soft-blue-300" : ""
                 }`}
               >
                 <item.icon className="mr-3 h-6 w-6" />
@@ -64,7 +64,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             ))}
           </nav>
           <div className="mt-auto p-4">
-            <Button className="w-full" variant="outline">
+            <Button className="w-full bg-soft-blue-600 hover:bg-soft-blue-700 text-white">
               <LogOut className="mr-2 h-4 w-4" />
               Logout
             </Button>
@@ -73,14 +73,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main content */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex flex-col flex-1 overflow-hidden">
         {/* Top bar */}
-        <header className="bg-white shadow-sm">
+        <header className="bg-soft-blue-200 shadow-sm">
           <div className="flex items-center justify-between px-4 py-3">
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden text-soft-blue-800"
               onClick={() => setIsSidebarOpen(true)}
             >
               <svg
@@ -95,8 +95,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </svg>
             </Button>
             <div className="flex items-center">
-              <Input className="mx-2 w-64 px-2" placeholder="Search..." type="search" />
-              <Button size="icon" variant="ghost">
+              <Input className="mr-2 w-full sm:w-64 bg-soft-blue-100" placeholder="Search..." type="search" />
+              <Button size="icon" variant="ghost" className="text-soft-blue-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -112,7 +112,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   />
                 </svg>
               </Button>
-              <Button size="icon" variant="ghost">
+              <Button size="icon" variant="ghost" className="text-soft-blue-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -133,7 +133,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
+        <main className="flex-1 overflow-y-auto bg-soft-blue-50 p-4">
           {children}
         </main>
       </div>
