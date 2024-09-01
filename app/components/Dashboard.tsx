@@ -114,20 +114,22 @@ export default function Dashboard() {
     ],
   }
 
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-      },
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: "top" as const, // Gunakan casting jika perlu
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
     },
-  }
+  },
+};
+
+
 
   return (
     <div className="space-y-4">
