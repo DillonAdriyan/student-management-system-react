@@ -37,11 +37,11 @@ const [enrollmentData, setEnrollmentData] = useState<ChartData<'bar'>>({
   labels: [] as string[],
   datasets: [],
 });
+const [gradeDistributionData, setGradeDistributionData] = useState<ChartData<'bar'>>({
+  labels: [] as string[],
+  datasets: [],
+});
 
-  const [gradeDistributionData, setGradeDistributionData] = useState({
-    labels: [],
-    datasets: []
-  });
 
 useEffect(() => {
   setEnrollmentData({
