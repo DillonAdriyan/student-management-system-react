@@ -32,33 +32,29 @@ ChartJS.register(
 );
 
 export default function ReportingAnalytics() {
-
-const [enrollmentData, setEnrollmentData] = useState<ChartData<'bar'>>({
-  labels: [] as string[],
-  datasets: [],
-});
-const [gradeDistributionData, setGradeDistributionData] = useState<ChartData<'bar'>>({
-  labels: [] as string[],
-  datasets: [],
-});
-
-
-useEffect(() => {
-  setEnrollmentData({
-    labels: ["January", "February", "March", "April", "May"],
-    datasets: [
-      {
-        label: "Enrollments",
-        data: [65, 59, 80, 81, 56],
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 1,
-      },
-    ],
+  const [enrollmentData, setEnrollmentData] = useState<ChartData<'bar'>>({
+    labels: [] as string[],
+    datasets: [],
   });
 
+  const [gradeDistributionData, setGradeDistributionData] = useState<ChartData<'bar'>>({
+    labels: [] as string[],
+    datasets: [],
+  });
 
-
+  useEffect(() => {
+    setEnrollmentData({
+      labels: ["January", "February", "March", "April", "May"],
+      datasets: [
+        {
+          label: "Enrollments",
+          data: [65, 59, 80, 81, 56],
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderWidth: 1,
+        },
+      ],
+    });
 
     // Simulasi data grade distribution
     setGradeDistributionData({
@@ -167,26 +163,26 @@ useEffect(() => {
       </div>
 
       <div className="w-full max-w-full">
-      <div className="grid gap-4 space-y-4 md:grid-cols-2">
-        <Card className="shadow-md rounded-lg">
-          <CardHeader className="bg-yellow-500 text-white p-4 rounded-t-lg">
-            <CardTitle className="text-xl">Enrollment Trends</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4">
-            <Line data={enrollmentData} />
-          </CardContent>
-        </Card>
+        <div className="grid gap-4 space-y-4 md:grid-cols-2">
+          <Card className="shadow-md rounded-lg">
+            <CardHeader className="bg-yellow-500 text-white p-4 rounded-t-lg">
+              <CardTitle className="text-xl">Enrollment Trends</CardTitle>
+            </CardHeader>
+            <CardContent className="p-4">
+              <Line data={enrollmentData} />
+            </CardContent>
+          </Card>
 
-        <Card className="shadow-md rounded-lg">
-          <CardHeader className="bg-red-500 text-white p-4 rounded-t-lg">
-            <CardTitle className="text-xl">Grade Distribution</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4">
-            <Bar data={gradeDistributionData} />
-          </CardContent>
-        </Card>
+          <Card className="shadow-md rounded-lg">
+            <CardHeader className="bg-red-500 text-white p-4 rounded-t-lg">
+              <CardTitle className="text-xl">Grade Distribution</CardTitle>
+            </CardHeader>
+            <CardContent className="p-4">
+              <Bar data={gradeDistributionData} />
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
-   </div>
   );
 }
