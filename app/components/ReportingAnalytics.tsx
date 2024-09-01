@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Line, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
+  ChartData,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -31,29 +32,33 @@ ChartJS.register(
 );
 
 export default function ReportingAnalytics() {
-  const [enrollmentData, setEnrollmentData] = useState({
-    labels: [],
-    datasets: []
-  });
+
+const [enrollmentData, setEnrollmentData] = useState<ChartData<'bar'>>({
+  labels: [] as string[],
+  datasets: [],
+});
+
   const [gradeDistributionData, setGradeDistributionData] = useState({
     labels: [],
     datasets: []
   });
 
-  useEffect(() => {
-    // Simulasi data enrollment trends
-    setEnrollmentData({
-      labels: ["January", "February", "March", "April", "May"],
-      datasets: [
-        {
-          label: "Enrollments",
-          data: [30, 45, 60, 50, 70],
-          borderColor: "rgba(53, 162, 235, 0.6)",
-          backgroundColor: "rgba(53, 162, 235, 0.1)", // Opsional, untuk fill area
-          fill: true,
-        },
-      ],
-    });
+useEffect(() => {
+  setEnrollmentData({
+    labels: ["January", "February", "March", "April", "May"],
+    datasets: [
+      {
+        label: "Enrollments",
+        data: [65, 59, 80, 81, 56],
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 1,
+      },
+    ],
+  });
+
+
+
 
     // Simulasi data grade distribution
     setGradeDistributionData({
