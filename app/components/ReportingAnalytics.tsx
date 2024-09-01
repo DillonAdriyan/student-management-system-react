@@ -33,18 +33,19 @@ ChartJS.register(
 
 export default function ReportingAnalytics() {
 // State untuk data Line chart
-const [enrollmentData, setEnrollmentData] = useState<ChartData<'line'>>({
-  labels: [] as string[],
-  datasets: [],
+  const [enrollmentData, setEnrollmentData] = useState<ChartData<'line'>>({
+    labels: [] as string[],
+    datasets: [],
 });
 
 
-  const [gradeDistributionData, setGradeDistributionData] = useState<ChartData<'bar'>>({
+  const [gradeDistributionData, setGradeDistributionData] = 
+    useState<ChartData<'bar'>>({
     labels: [] as string[],
     datasets: [],
   });
 
-  useEffect(() => {useEffect(() => {
+  useEffect(() => {
   setEnrollmentData({
     labels: ["January", "February", "March", "April", "May"],
     datasets: [
@@ -80,7 +81,7 @@ const [enrollmentData, setEnrollmentData] = useState<ChartData<'line'>>({
         },
       ],
     });
-  }, []);
+  }, []); 
 
   return (
     <div className="space-y-6">
@@ -192,4 +193,5 @@ const [enrollmentData, setEnrollmentData] = useState<ChartData<'line'>>({
       </div>
     </div>
   );
-}
+  }
+
