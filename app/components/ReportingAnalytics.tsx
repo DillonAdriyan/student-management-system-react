@@ -32,29 +32,36 @@ ChartJS.register(
 );
 
 export default function ReportingAnalytics() {
-  const [enrollmentData, setEnrollmentData] = useState<ChartData<'bar'>>({
-    labels: [] as string[],
-    datasets: [],
-  });
+// State untuk data Line chart
+const [enrollmentData, setEnrollmentData] = useState<ChartData<'line'>>({
+  labels: [] as string[],
+  datasets: [],
+});
+
 
   const [gradeDistributionData, setGradeDistributionData] = useState<ChartData<'bar'>>({
     labels: [] as string[],
     datasets: [],
   });
 
-  useEffect(() => {
-    setEnrollmentData({
-      labels: ["January", "February", "March", "April", "May"],
-      datasets: [
-        {
-          label: "Enrollments",
-          data: [65, 59, 80, 81, 56],
-          backgroundColor: "rgba(75,192,192,0.4)",
-          borderColor: "rgba(75,192,192,1)",
-          borderWidth: 1,
-        },
-      ],
-    });
+  useEffect(() => {useEffect(() => {
+  setEnrollmentData({
+    labels: ["January", "February", "March", "April", "May"],
+    datasets: [
+      {
+        label: "Enrollments",
+        data: [65, 59, 80, 81, 56],
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 1,
+        fill: false, // Properti tambahan untuk Line chart
+      },
+    ],
+  });
+
+  // Perubahan data untuk Bar chart di sini tidak diperlukan
+
+
 
     // Simulasi data grade distribution
     setGradeDistributionData({
